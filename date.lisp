@@ -35,7 +35,7 @@
          (hidden (if pos (subseq url pos) nil)))
     `(display (make-instance 'form
                              :action ,(subseq url 0 pos)
-                             :reqtype (request-type (find-page ',(first url) (package-webapp)))
+                             :reqtype (request-type (find-page ',(first url) (current-acceptor)))
                              :hidden (list ,@hidden)
                              :body (html ()
                                      ,@body)))))
