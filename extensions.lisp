@@ -37,7 +37,7 @@
 
 (defmethod display ((messenger messenger) &key)
   (flet ((get-message (param messages)
-           (if-let (msg-plist (second (assoc (name (attributes param)) messages)))
+           (if-let (msg-plist (second (assoc (parameter-name (attributes param)) messages)))
              ;; if the name of the parameter is not found, don't print any messages
              (if-let (tail (member (error-type param) msg-plist))
                ;; Use member to extract message from plist instead of
