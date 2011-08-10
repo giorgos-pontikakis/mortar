@@ -7,7 +7,7 @@
 
 (defmacro with-db (&optional db-connection-spec &body body)
   (with-gensyms (db)
-    `(let ((,db (or ,db-connection-spec (db-connection-spec (current-acceptor)))))
+    `(let ((,db (or ,db-connection-spec (db-connection-spec (default-acceptor)))))
        (with-connection (list (getf ,db :dbname)
                               (getf ,db :dbuser)
                               (getf ,db :dbpass)
