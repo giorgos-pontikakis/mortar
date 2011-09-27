@@ -47,3 +47,7 @@
 (defmethod lisp->html ((value date))
   (multiple-value-bind (year month day) (decode-date value)
     (format nil "~A/~A/~A" day month year)))
+
+(defmethod lisp->urlenc ((value date))
+  (multiple-value-bind (year month day) (decode-date value)
+    (url-encode (format nil "~A-~A-~A" day month year))))
