@@ -29,11 +29,16 @@
 ;;; Date
 ;;; ------------------------------------------------------------
 
+(define-condition date-parse-error (error)
+  ((raw-value :accessor raw-value :initarg :raw-value)))
+
 (defun parse-date (value)
-  (destructuring-bind (day month year) (mapcar #'parse-integer (split "-|/|\\." value))
-    (encode-date (if (< year 1000) (+ year 2000) year)
-                 month
-                 day)))
+  (handler-case (destructuring-bind (day month year) (mapcar #'parse-integer (split "-|/|\\." value))
+                  (encode-date (if (< year 1000) (+ year 2000) year)
+                               month
+                               day))
+    (error () ;; match all errors
+      (error 'date-parse-error :raw-value value))))
 
 (defmethod urlenc->lisp (value (type (eql 'date)))
   (handler-case (if (string-equal value +urlenc-false+)

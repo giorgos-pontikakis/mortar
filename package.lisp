@@ -20,5 +20,6 @@
            "WITH-DB"
            "SELECT-DAO-UNIQUE"
            "PARSE-DATE"
+           "DATE-PARSE-ERROR"
            "SEE-OTHER"
            ))
