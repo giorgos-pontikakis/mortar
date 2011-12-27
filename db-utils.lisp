@@ -34,9 +34,10 @@
 
 (defun parse-date (value)
   (handler-case (destructuring-bind (day month year) (mapcar #'parse-integer (split "-|/|\\." value))
-                  (encode-date (if (< year 1000) (+ year 2000) year)
-                               month
-                               day))
+                  (encode-timestamp 0 0 0 0
+                                    month
+                                    day
+                                    (if (< year 1000) (+ year 2000) year)))
     (error () ;; match all errors
       (error 'date-parse-error :raw-value value))))
 
@@ -49,10 +50,9 @@
              :http-type type
              :raw-value value))))
 
-(defmethod lisp->html ((value date))
-  (multiple-value-bind (year month day) (decode-date value)
-    (format nil "~A/~A/~A" day month year)))
+(defmethod lisp->html ((tstamp timestamp))
+  (format-timestring nil tstamp :format '((:day 2) #\/ (:month 2) #\/ (:year 4))))
 
-(defmethod lisp->urlenc ((value date))
-  (multiple-value-bind (year month day) (decode-date value)
-    (url-encode (format nil "~A-~A-~A" day month year))))
+(defmethod lisp->urlenc ((tstamp timestamp))
+  (url-encode
+   (format-timestring nil tstamp :format '((:day 2) #\- (:month 2) #\- (:year 4)))))

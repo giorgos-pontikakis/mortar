@@ -8,7 +8,7 @@
         "HUNCHENTOOT"
         "CL-WHO"
         "POSTMODERN"
-        "SIMPLE-DATE"
+        "LOCAL-TIME"
         "VEIL"
         "BRICKS")
   (:export "DATABASE"
@@ -19,7 +19,6 @@
            "ADAPTER"
            "WITH-DB"
            "SELECT-DAO-UNIQUE"
-           "PARSE-DATE"
            "DATE-PARSE-ERROR"
            "SEE-OTHER"
            ))

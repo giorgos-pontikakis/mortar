@@ -9,8 +9,8 @@
                 :cl-ppcre
                 :hunchentoot
                 :cl-who
+                :local-time
                 :postmodern
-                :simple-date
                 :veil
                 :bricks)
   :components ((:file "package")
