@@ -11,6 +11,7 @@
                 :cl-who
                 :local-time
                 :postmodern
+                :cl-postgres+local-time
                 :veil
                 :bricks)
   :components ((:file "package")

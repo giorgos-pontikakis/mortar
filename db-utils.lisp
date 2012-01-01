@@ -35,8 +35,8 @@
 (defun parse-date (value)
   (handler-case (destructuring-bind (day month year) (mapcar #'parse-integer (split "-|/|\\." value))
                   (encode-timestamp 0 0 0 0
-                                    month
                                     day
+                                    month
                                     (if (< year 1000) (+ year 2000) year)))
     (error () ;; match all errors
       (error 'date-parse-error :raw-value value))))
