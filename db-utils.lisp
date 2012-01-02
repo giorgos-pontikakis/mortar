@@ -7,12 +7,15 @@
 
 (defmacro with-db (&optional db-connection-spec &body body)
   (with-gensyms (db)
-    `(let ((,db (or ,db-connection-spec (db-connection-spec (default-acceptor)))))
-       (with-connection (list (getf ,db :dbname)
-                              (getf ,db :dbuser)
-                              (getf ,db :dbpass)
-                              (getf ,db :dbhost))
-         ,@body))))
+    `(if *database*
+         (progn
+           ,@body)
+         (let ((,db (or ,db-connection-spec (db-connection-spec (default-acceptor)))))
+           (with-connection (list (getf ,db :dbname)
+                                  (getf ,db :dbuser)
+                                  (getf ,db :dbpass)
+                                  (getf ,db :dbhost))
+             ,@body)))))
 
 (defmacro select-dao-unique (type &optional (test t) &rest ordering)
   (with-gensyms (dao)
@@ -37,7 +40,8 @@
                   (encode-timestamp 0 0 0 0
                                     day
                                     month
-                                    (if (< year 1000) (+ year 2000) year)))
+                                    (if (< year 1000) (+ year 2000) year)
+                                    :timezone +utc-zone+))
     (error () ;; match all errors
       (error 'date-parse-error :raw-value value))))
 
