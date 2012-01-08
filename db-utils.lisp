@@ -40,8 +40,7 @@
                   (encode-timestamp 0 0 0 0
                                     day
                                     month
-                                    (if (< year 1000) (+ year 2000) year)
-                                    :timezone +utc-zone+))
+                                    (if (< year 1000) (+ year 2000) year)))
     (error () ;; match all errors
       (error 'date-parse-error :raw-value value))))
 
@@ -53,6 +52,7 @@
       (error 'http-parse-error
              :http-type type
              :raw-value value))))
+
 
 (defmethod lisp->html ((tstamp timestamp))
   (format-timestring nil tstamp :format '((:day 2) #\/ (:month 2) #\/ (:year 4))))
