@@ -26,6 +26,15 @@
                (first ,dao)
                (error "DAO is not unique"))))))
 
+(defmethod urlenc->lisp (value (type (eql 'date)))
+  (handler-case (if (string-equal value +urlenc-false+)
+                    nil
+                    (parse-date value))
+    (error () ;; match all errors
+      (error 'http-parse-error
+             :http-type type
+             :raw-value value))))
+
 
 
 ;;; ------------------------------------------------------------
@@ -43,15 +52,6 @@
                                     (if (< year 1000) (+ year 2000) year)))
     (error () ;; match all errors
       (error 'date-parse-error :raw-value value))))
-
-(defmethod urlenc->lisp (value (type (eql 'date)))
-  (handler-case (if (string-equal value +urlenc-false+)
-                    nil
-                    (parse-date value))
-    (error () ;; match all errors
-      (error 'http-parse-error
-             :http-type type
-             :raw-value value))))
 
 
 (defmethod lisp->html ((tstamp timestamp))
