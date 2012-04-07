@@ -10,7 +10,7 @@
     `(if *database*
          (progn
            ,@body)
-         (let ((,db (or ,db-connection-spec (db-connection-spec (default-acceptor)))))
+         (let ((,db (or ,db-connection-spec (db-connection-spec (default-webapp)))))
            (with-connection (list (getf ,db :dbname)
                                   (getf ,db :dbuser)
                                   (getf ,db :dbpass)
