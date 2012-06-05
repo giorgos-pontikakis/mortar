@@ -5,6 +5,9 @@
 ;;; Utilities
 ;;; ------------------------------------------------------------
 
+(defclass webapp/db (webapp)
+  ((db-connection-spec :accessor db-connection-spec :initarg :db-connection-spec)))
+
 (defmacro with-db (&optional db-connection-spec &body body)
   (with-gensyms (db)
     `(if *database*
