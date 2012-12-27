@@ -50,11 +50,12 @@
     (unless (every #'validp (parameters messenger))
       (with-html
         (:ul :id (id messenger)
-          (iter (for p in (parameters messenger))
-                (unless (validp p)
-                  (when-let (msg (get-message p (messages messenger)))
-                    (htm (:li :class (css-class messenger)
-                           (str msg)))))))))))
+          (mapc (lambda (p)
+                  (unless (validp p)
+                    (when-let (msg (get-message p (messages messenger)))
+                      (htm (:li :class (css-class messenger)
+                             (str msg))))))
+                (parameters messenger)))))))
 
 (defun messenger (messages parameters &rest instance-initargs)
   (display (apply #'make-instance 'messenger
