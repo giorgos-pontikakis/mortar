@@ -2,7 +2,6 @@
 
 (defpackage :mortar
   (:use "COMMON-LISP"
-        "ITERATE"
         "ALEXANDRIA"
         "CL-PPCRE"
         "HUNCHENTOOT"
