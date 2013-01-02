@@ -4,16 +4,15 @@
 
 (asdf:defsystem :mortar
   :serial t
-  :depends-on (:iterate
-                :alexandria
-                :cl-ppcre
-                :hunchentoot
-                :cl-who
-                :local-time
-                :postmodern
-                :cl-postgres+local-time
-                :veil
-                :bricks)
+  :depends-on (:alexandria
+               :cl-ppcre
+               :hunchentoot
+               :cl-who
+               :local-time
+               :postmodern
+               :cl-postgres+local-time
+               :veil
+               :bricks)
   :components ((:file "package")
                (:file "db-utils")
                (:file "extensions")))
