@@ -40,6 +40,16 @@
 
 
 
+;;; ----------------------------------------------------------------------
+;;; integration for local-time and cl-postgres
+;;; ----------------------------------------------------------------------
+
+(set-local-time-cl-postgres-readers)
+
+(define-timezone "+GREEK-ZONE+" #p"/usr/share/zoneinfo/Europe/Athens")
+
+
+
 ;;; ------------------------------------------------------------
 ;;; Date
 ;;; ------------------------------------------------------------
@@ -57,11 +67,10 @@
     (error () ;; match all errors
       (error 'date-parse-error :raw-value value))))
 
-
 (defmethod lisp->html ((tstamp timestamp))
   (format-timestring nil tstamp
                      :format '((:day 2) #\/ (:month 2) #\/ (:year 4))
-                     :timezone +utc-zone+))
+                     :timezone *default-timezone*))
 
 (defmethod lisp->urlenc ((tstamp timestamp))
   (url-encode
