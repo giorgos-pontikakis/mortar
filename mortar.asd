@@ -9,7 +9,7 @@
 
 (defsystem :mortar
   :serial t
-  :version "1.0.0"
+  :version "1.0.1"
   ;;
   :depends-on (:alexandria
                :cl-ppcre
