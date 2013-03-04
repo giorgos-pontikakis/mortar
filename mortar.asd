@@ -9,7 +9,7 @@
 
 (defsystem :mortar
   :serial t
-  :version "1.0.1"
+  :version "1.0.2"
   ;;
   :depends-on (:alexandria
                :cl-ppcre
@@ -18,7 +18,8 @@
                :local-time
                :postmodern
                :cl-postgres+local-time
-               (:version :veil "1.0.0"))
+               (:version :veil "1.0.0")
+               (:version :bricks "1.0.3"))
   ;;
   :components ((:file "package")
                (:file "db-utils")
