@@ -3,7 +3,7 @@
 (in-package :cl-user)
 
 (defpackage :mortar-asdf
-    (:use :cl :asdf))
+  (:use :cl :asdf))
 
 (in-package :mortar-asdf)
 
