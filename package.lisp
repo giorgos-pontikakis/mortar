@@ -4,12 +4,9 @@
   (:use "COMMON-LISP"
         "ALEXANDRIA"
         "CL-PPCRE"
-        "HUNCHENTOOT"
-        "CL-WHO"
-        "POSTMODERN"
-        "LOCAL-TIME"
         "VEIL"
-        "BRICKS")
+        "POSTMODERN"
+        "LOCAL-TIME")
   (:export "WEBAPP/DB"
            "DB-CONNECTION-SPEC"
            "*DATABASE*"
@@ -17,6 +14,5 @@
            "SELECT-DAO-UNIQUE"
            "DATE-PARSE-ERROR"
            "+GREEK-ZONE+"
-           "SEE-OTHER"
-           "WITH-FORM"
-           "MESSENGER"))
+           "CSS"
+           "JS"))
