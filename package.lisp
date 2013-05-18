@@ -4,7 +4,9 @@
   (:use "COMMON-LISP"
         "ALEXANDRIA"
         "CL-PPCRE"
+        "HUNCHENTOOT"
         "VEIL"
+        "BRICKS"
         "POSTMODERN"
         "LOCAL-TIME")
   (:export "WEBAPP/DB"
