@@ -5,6 +5,7 @@
         "ALEXANDRIA"
         "CL-PPCRE"
         "HUNCHENTOOT"
+        "CL-WHO"
         "VEIL"
         "BRICKS"
         "POSTMODERN"
@@ -16,5 +17,9 @@
            "SELECT-DAO-UNIQUE"
            "DATE-PARSE-ERROR"
            "+GREEK-ZONE+"
+           "SEE-OTHER"
            "CSS"
-           "JS"))
+           "JS"
+           "MESSENGER"
+           "PARAMETERS"
+           "MESSAGES"))
