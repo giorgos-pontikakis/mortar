@@ -67,7 +67,7 @@
     (error () ;; match all errors
       (error 'date-parse-error :raw-value value))))
 
-(defmethod lisp->html ((tstamp timestamp))
+(defmethod lisp->html ((tstamp timestamp) &key)
   (format-timestring nil tstamp
                      :format '((:day 2) #\/ (:month 2) #\/ (:year 4))
                      :timezone *default-timezone*))

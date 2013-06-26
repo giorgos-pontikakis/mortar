@@ -65,9 +65,3 @@
                       (htm (:li :class (css-class messenger)
                              (str msg))))))
                 (parameters messenger)))))))
-
-;; (defun messenger (messages parameters &rest instance-initargs)
-;;   (display (apply #'make-instance 'messenger
-;;                   :messages messages
-;;                   :parameters parameters
-;;                   instance-initargs)))
